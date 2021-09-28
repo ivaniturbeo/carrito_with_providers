@@ -1,9 +1,10 @@
 import 'package:cart/models/carrito.dart';
+import 'package:cart/models/producto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class ItemCart extends StatelessWidget {
-  final CarritoElement? itemCart;
+  final Producto? itemCart;
   const ItemCart({
     Key? key,
     @required this.itemCart,
@@ -25,7 +26,7 @@ class ItemCart extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(5)),
                   child: Image.network(
-                    "https://www.coffeeandhealth.org/wp-content/uploads/2011/02/4511108-coffee-cup-wallpapers-680x386.jpg",
+                    itemCart!.picture.toString(),
                     width: 120,
                   ),
                 ),
@@ -40,7 +41,7 @@ class ItemCart extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(width: 0.1),
                       ),
-                      child: Text("999"),
+                      child: Text(itemCart!.amount.toString()),
                     ),
                     IconButton(
                       icon: Icon(Icons.add),
@@ -58,11 +59,11 @@ class ItemCart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Nombre del producto",
+                  itemCart!.name.toString(),
                   style: TextStyle(fontSize: 22),
                 ),
                 Text(
-                  "900.888",
+                  itemCart!.price.toString(),
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w200,
